@@ -1,0 +1,2 @@
+import{s as e,b as r,a,S as s}from"./chunk-6OLS64BW-Da71S9eV.js";import{_ as i}from"./mermaid-vendor-BZUIBVmu.js";import"./chunk-BFAMUDN2-8pd_QnMY.js";import"./chunk-SKB7J2MH-Dcj0uS4i.js";import"./react-vendor-CDsW1avw.js";var p={parser:a,get db(){return new s(2)},renderer:r,styles:e,init:i(t=>{t.state||(t.state={}),t.state.arrowMarkerAbsolute=t.arrowMarkerAbsolute},"init")};export{p as diagram};
+//# sourceMappingURL=stateDiagram-v2-GD6S3NHB-CF8qv6ZJ.js.map
