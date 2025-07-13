@@ -8,7 +8,7 @@ export default defineConfig(({ command }) => {
   
   return {
     // Use base path only in production (GitHub Pages)
-    base: isProduction ? '/YOUR_REPO_NAME/' : '/',
+    base: isProduction ? '/template-example/' : '/',
     plugins: [
       react(),
     ],
