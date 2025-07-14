@@ -38,26 +38,25 @@ const router = createBrowserRouter(
   }
 );
 
-// Add a 404.html page for GitHub Pages to handle direct URL access
-// GitHub Pages uses this pattern to handle direct navigation to routes
+// Handle GitHub Pages SPA routing redirect
 if (import.meta.env.PROD) {
-  const script = document.createElement('script');
-  script.innerHTML = `
-    // Single Page Apps for GitHub Pages
-    // This script checks to see if a redirect is needed
-    // If the user went directly to a page other than the homepage
-    (function(l) {
-      if (l.search[1] === '/') {
-        var decoded = l.search.slice(1).split('&').map(function(s) { 
-          return s.replace(/~and~/g, '&')
-        }).join('?');
-        window.history.replaceState(null, null,
-          l.pathname.slice(0, -1) + decoded + l.hash
-        );
-      }
-    }(window.location))
-  `;
-  document.head.appendChild(script);
+  // Check if we were redirected from 404.html
+  const redirect = sessionStorage.getItem('redirect');
+  if (redirect) {
+    sessionStorage.removeItem('redirect');
+    window.history.replaceState(null, null, redirect);
+  }
+  
+  // Also handle the query string redirect pattern
+  const search = window.location.search;
+  if (search && search[1] === '/') {
+    const decoded = search.slice(1).split('&').map(function(s) { 
+      return s.replace(/~and~/g, '&')
+    }).join('?');
+    window.history.replaceState(null, null,
+      window.location.pathname + decoded + window.location.hash
+    );
+  }
 }
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
